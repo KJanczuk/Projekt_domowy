@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-#include "winbgi2.h"
 #include "rk4.h"
 
 void rhs_fun(double t, double* X, double* F);
@@ -14,10 +13,6 @@ void main()
 	double v0;
 	double h = 0.01;
 	double t_max = 10;
-
-	m = 10;
-	S = 5;
-	C = 0.5;
 
 	do {
 		printf("Podaj polozenie poczatkowe\nz0=");
@@ -48,10 +43,7 @@ void main()
 
 	} while (C <= 0);
 
-
-
 	FILE* f = fopen("dane.txt", "w");
-
 
 	double X[2] = { z0, v0 };
 	double X1[2];
@@ -85,4 +77,3 @@ void rhs_fun(double t, double* X, double* F)
 	F[0] = X[1];
 	F[1] = -rho / 2 * S * C / m * X[1] * fabs(X[1]) - g;
 }
-
